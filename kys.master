@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="kys.master.cs" Inherits="kys" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Know Your Student</title>
+    <link rel="icon" type="image/png" href="../img/favicon.jpg" />
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap-material-design.css" type="text/css" rel="stylesheet" />
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" type="text/css" rel="stylesheet" />
+    <!----font-Awesome----->
+    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <!----font-Awesome----->
+    <link href="css/ripples.css" type="text/css" rel="stylesheet" />
+    <link href="css/slider.css" rel="stylesheet" />
+    <link href="css/owl.carousel.css" rel="stylesheet" />
+    <!-- Material Design fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css' />
+    <!-- js includes -->
+    <script src="js/underscore-min.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/ripples.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script src="js/npm.js"></script>
+    <script src="js/moment-2.2.1.js"></script>
+    <script src="js/material.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/clndr.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery.cslider.js"></script>
+    <script src="js/modernizr.custom.28468.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <script type="text/javascript">
+        $(function () {
+
+            $('#da-slider').cslider({
+                autoplay: true,
+                bgincrement: 450
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $("#owl-demo").owlCarousel({
+                items: 4,
+                lazyLoad: true,
+                autoPlay: true,
+                navigation: true,
+                navigationText: ["", ""],
+                rewindNav: false,
+                scrollPerPage: false,
+                pagination: false,
+                paginationNumbers: false,
+            });
+
+        });
+    </script>
+    <!-- //Owl Carousel Assets -->
+    <!-- material ui initilizer -->
+    <script type="application/x-javascript">
+        $.material.init();
+        $.material.ripples();
+        $.material.input();
+        $.material.checkbox();
+        $.material.radio();
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-bg full-width">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo-text" href="index.aspx">Know Your Student</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.aspx">Home</a></li>
+                    <% if (((string)Session["level"]) == "student")
+                       { %>
+                    <li><a href="student.aspx">Student</a></li>
+
+                    <% }
+                       else if (((string)Session["level"]) == "faculty")
+                       { %>
+                    <li><a href="tutor.aspx">Tutor</a></li>
+                    <li><a href="placement.aspx?id=<%= Session["user"] %>">Placement</a></li>
+                    <%} %>
+                    <% if (Session["user"] == null)
+                       { %>
+                    <li><a href="login.aspx">Login</a></li>
+                    <% }
+                       else
+                       { %>
+                    <li><a href="logout.aspx">Logout</a></li>
+                    <%} %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    <footer>
+        <div class="footer-home">
+            <div class="container full-width">
+                <div class="col-md-12">
+                    <div class="col-md-3 text-center">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <p class="home-a">2016 &copy; Copyright & Designed by : AURORA</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a class="home-a" href="about_us.aspx">About us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

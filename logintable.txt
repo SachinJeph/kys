@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[login_detail] (
+    [login_id] INT          IDENTITY (1, 1) NOT NULL,
+    [username] VARCHAR (50) NOT NULL,
+    [password] VARCHAR (50) NOT NULL,
+    [type]     VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([login_id] ASC)
+);
+
